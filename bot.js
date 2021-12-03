@@ -37,10 +37,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                                     
                 });
 
-            case 'test':
+            case 'dicksize':
             	bot.sendMessage({
             		to: channelID,
-            		message: 'bruh u really gotta test ur bot lmfao'
+            		message: 'ok so u need a bot to check your dicksize for you? lol but i cant even see it'
+            	
             	})
 
             case 'stink':
