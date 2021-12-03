@@ -1,57 +1,72 @@
-var Discord = require('discord.io');
-var logger = require('winston');
-var auth = require('./config.json');
+// Load up the discord.js library
+const Discord = require("discord.js");
 
-logger.remove(logger.transports.Console);
-logger.add(new logger.transports.Console, {
-    colorize: true
+// This is your client. Some people call it `bot`, some people call it `self`, 
+// some might call it `cootchie`. Either way, when you see `client.something`, or `bot.something`,
+// this is what we're refering to. Your client.
+const client = new Discord.Client();
+// test
+// Here we load the config.json file that contains our token and our prefix values. 
+const config = require("./config.json");
+const fs = require("fs");
+// config.token contains the bot's token
+// config.prefix contains the message prefix.
+client.on("ready", () => {
+  // This event will run if the bot starts, and logs in, successfully.
+  console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`); 
+  // Example of changing the bot's playing game to something useful. `client.user` is what the
+  // docs refer to as the "ClientUser".
+  let statuses = [ `${client.users.cache.size} users!`, `Prefix : -`, `ItsBondie`];
+  
+
+  setInterval(function(){
+    let status = statuses[Math.floor(Math.random()*statuses.length)];
+    
+    client.user.setStatus('idle')
+    client.user.setPresence({ activities: [{ name: status }], status: 'idle' });
+    client.user.setActivity(status, { type: 'WATCHING' });
+
+  }, 6000)
+
+
+
+    
 });
-logger.level = 'debug';
-var bot = new Discord.Client({
-   token: auth.token,
-   autorun: true
+
+client.on("guildCreate", guild => {
+  // This event triggers when the bot joins a guild.
+  console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
 });
-bot.on('ready', function (evt) {
-	var name = "https://github.com/BondieDev/Bondie";
-	bot.setPresence({
-    	game: {
-        	name,
-}});
-    logger.info('Connected and');
-    logger.info('Logged in as: '+bot.username + ' - (' + bot.id + ')');
+
+client.on("guildDelete", guild => {
+  // this event triggers when the bot is removed from a guild.
+  console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
 });
-bot.on('message', function (user, userID, channelID, message, evt) {
 
 
-    if (message.substring(0, 1) == '-') {
-        var args = message.substring(1).split(' ');
-        var cmd = args[0];
-       
-        args = args.splice(1);
-        switch(cmd) {
-            // !ping
-            case 'ping':
-                bot.sendMessage({
-                    to: channelID,
-                    message: 'Pong!'
-                                    
-                });
+client.on("message", async message => {
+  // This event will run on every single message received, from any channel or DM.
+  console.log("[" + message.channel.name + "] " + message.member.user.tag + " > " + message.content);
+  // It's good practice to ignore other bots. This also makes your bot ignore itself
+  // and not get into a spam loop (we call that "botception").
+  if(message.author.bot) return;  
+  if(message.content.indexOf(config.prefix) !== 0) return;
+  
+  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
 
-            case 'dicksize':
-            	bot.sendMessage({
-            		to: channelID,
-            		message: 'ok so u need a bot to check your dicksize for you? lol but i cant even see it'
-            	
-            	})
+  // Ping command
+  if(command === "ping") {
+    // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
+    // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
+    let ping = (Math.round(Math.random() * 17) + 2)
+    let ping2 = (Math.round(Math.random() * 12) + 1)
+    message.channel.send("Pong?").then((message)=>{
+      message.edit("Bot ping is " + ping + "ms, API latency is " + ping2 +"ms.")
+    });
+  }
 
-            case 'stink':
-            	bot.sendMessage({
-            		to: channelID,
-            		message: 'you are a stinky'
-            	})
+}
+);
 
-            break;
-            // Just add any case commands if you want to..
-         }
-     }
-});
+client.login(config.token);
