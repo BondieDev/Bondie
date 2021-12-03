@@ -77,7 +77,7 @@ client.on("message", async message => {
         return;
    }
 
-     message.delete();
+    message.delete();
     message.channel.send("<@"+userS+">  slapped " + "<@"+userK+">", {
         files: [
             "./pics/slap/slap"+number+".gif"
