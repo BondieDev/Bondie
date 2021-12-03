@@ -12,11 +12,18 @@ var bot = new Discord.Client({
    autorun: true
 });
 bot.on('ready', function (evt) {
+	var name = "https://github.com/BondieDev/Bondie";
+	bot.setPresence({
+    	game: {
+        	name,
+}});
     logger.info('Connected');
     logger.info('Logged in as: '+bot.username + ' - (' + bot.id + ')');
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
 bot.on('message', function (user, userID, channelID, message, evt) {
+
+
     if (message.substring(0, 1) == '-') {
         var args = message.substring(1).split(' ');
         var cmd = args[0];
