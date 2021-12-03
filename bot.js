@@ -31,7 +31,7 @@ client.on("ready", () => {
 	totalSeconds %= 3600;
 	let minutes = Math.floor(totalSeconds / 60);
 	let seconds = Math.floor(totalSeconds % 60);
-	let uptime = `${days}d, ${hours}h, ${minutes}m and ${seconds}s`;
+	const uptime = `${days}d, ${hours}h, ${minutes}m and ${seconds}s`;
   
 
   setInterval(function(){
