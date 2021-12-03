@@ -66,6 +66,24 @@ client.on("message", async message => {
     });
   }
 
+
+  if(command === "slap") {
+    let userK = message.mentions.members.first();
+    let userS = message.member.id;
+    let number = Math.floor((Math.random() * 14) + 1);
+
+    if (!userK) {
+        message.channel.send("You can't slap nobody!")
+        return;
+   }
+
+     message.delete();
+    message.channel.send("<@"+userS+">  slapped " + "<@"+userK+">", {
+        files: [
+            "./pics/slap/slap"+number+".gif"
+        ]});
+  }
+
 }
 );
 
