@@ -30,6 +30,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Pong!'
                                     
                 });
+
+            case 'test':
+            	bot.sendMessage({
+            		to: channelID,
+            		message: 'bruh u really gotta test ur bot lmfao'
+            	})
             break;
             // Just add any case commands if you want to..
          }
