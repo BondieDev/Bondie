@@ -12,11 +12,18 @@ const fs = require("fs");
 // config.token contains the bot's token
 // config.prefix contains the message prefix.
 client.on("ready", () => {
+
+	let serverlist = ''
+	let count = 0; //<---
+	client.guilds.cache.forEach((guild) => {
+    count += guild.memberCount // <---
+
+})
   // This event will run if the bot starts, and logs in, successfully.
-  console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`); 
+  console.log(`Bot has started, with ${client.guilds.cache.size} servers, ${client.channels.cache.size} channels and ${count} users.`); 
   // Example of changing the bot's playing game to something useful. `client.user` is what the
   // docs refer to as the "ClientUser".
-  let statuses = [ `${client.users.cache.size} users!`, `Prefix : -`, `ItsBondie`];
+  let statuses = [ `${count} users!`, `Prefix : -`, `ItsBondie`];
   
 
   setInterval(function(){
