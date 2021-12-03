@@ -33,7 +33,7 @@ client.on("ready", () => {
     client.user.setPresence({ activities: [{ name: status }], status: 'idle' });
     client.user.setActivity(status, { type: 'WATCHING' });
 
-  }, 6000)
+  }, 60000)
 
 
 
