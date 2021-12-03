@@ -24,15 +24,6 @@ client.on("ready", () => {
   // Example of changing the bot's playing game to something useful. `client.user` is what the
   // docs refer to as the "ClientUser".
   let statuses = [ `${count} users!`, `Prefix : -`, `ItsBondie`];
-  let totalSeconds = (client.uptime / 1000);
-	let days = Math.floor(totalSeconds / 86400);
-	totalSeconds %= 86400;
-	let hours = Math.floor(totalSeconds / 3600);
-	totalSeconds %= 3600;
-	let minutes = Math.floor(totalSeconds / 60);
-	let seconds = Math.floor(totalSeconds % 60);
-	const uptime = `${days}d, ${hours}h, ${minutes}m and ${seconds}s`;
-  
 
   setInterval(function(){
     let status = statuses[Math.floor(Math.random()*statuses.length)];
@@ -100,6 +91,14 @@ client.on("message", async message => {
   }
 
   if(command === "uptime") {
+  	let totalSeconds = (client.uptime / 1000);
+	let days = Math.floor(totalSeconds / 86400);
+	totalSeconds %= 86400;
+	let hours = Math.floor(totalSeconds / 3600);
+	totalSeconds %= 3600;
+	let minutes = Math.floor(totalSeconds / 60);
+	let seconds = Math.floor(totalSeconds % 60);
+	let uptime = `${days}d, ${hours}h, ${minutes}m and ${seconds}s`;
     message.channel.send("Current bot uptime: "+uptime);
   }
 
