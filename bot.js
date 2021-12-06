@@ -92,6 +92,14 @@ client.on("message", async message => {
     message.channel.send("Current bot uptime: "+uptime);
   }
 
+  if(command === "curse"){
+  	let curses = [ `fuck` , `shit` , `arse` , `crap` , `bloody` , `damn`,`piss off`,`dickhead`,`asshole`,`bitch`,`bastard`];
+
+    let curse = curses[Math.floor(Math.random()*curses.length)];
+    message.channel.send(curse+"!")
+ 
+  }
+
 }
 );
 
