@@ -63,11 +63,19 @@ client.on("message", async message => {
   // }
 
   if (command === "ping") {
-  	message.channel.send('Loading data').then (async (msg) =>{
-    msg.delete()
-    message.channel.send(`🏓Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`);
-  })
-  }
+ 	message.channel.send("Pinging...").then(m =>{
+          
+            var ping = m.createdTimestamp - message.createdTimestamp;
+
+          
+            var embed = new Discord.MessageEmbed()
+            .setAuthor(`Your ping is ${ping}`)
+            .setColor("#6a0dad")
+            
+            
+            m.edit(embed)
+        });
+  	  }
 
 
   if (command === "say"){
