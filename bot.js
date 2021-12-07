@@ -96,6 +96,7 @@ client.on("message", async message => {
   	let curses = [ `fuck` , `shit` , `arse` , `crap` , `bloody` , `damn`,`piss off`,`dickhead`,`asshole`,`bitch`,`bastard`];
 
     let curse = curses[Math.floor(Math.random()*curses.length)];
+    message.delete();
     message.channel.send(curse+"!")
  
   }
