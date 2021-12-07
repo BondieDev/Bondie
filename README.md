@@ -1,43 +1,8 @@
 # Bondie
 Bondie's Discord Bot
 
+Hello,
 
-Yeah well if you want to steal my code go right ahead i dont give no flying fuck lmao
+This is my repository for my discord.js bot called Bondie's Bot.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-bro fuck u why u still here
+I am currently just wokring on the bot in my freetime and I am not planning on releasing the bot to the public just yet. Maybe in the future.
