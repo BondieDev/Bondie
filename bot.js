@@ -70,6 +70,17 @@ client.on("message", async message => {
   }
 
 
+  if (command === "say"){
+  	let MSG = message.content.split(" ");
+  	let Query = MSG.slice(1).join("+");
+  	let QueryD = MSG.slice(1).join(" ");
+  	if (!Query) message.reply("Please specify something for me to say!")
+  	else
+  {
+    message.channel.send(QueryD + " -" + message.author.tag)
+}
+}
+
   if(command === "slap") {
     let userK = message.mentions.members.first();
     let userS = message.member.id;
