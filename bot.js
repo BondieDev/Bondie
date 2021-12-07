@@ -17,7 +17,7 @@ client.on("ready", () => {
   
   console.log(`Bot has started, with ${client.guilds.cache.size} servers, ${client.channels.cache.size} channels and ${count} users.`); 
 
-  client.user.setActivity(`Porn`, { type: "WATCHING" })
+  client.user.setActivity(`porn`, { type: "WATCHING" })
   
   // let statuses = [ `${count} users!`, `Prefix : -`, `ItsBondie`];
 
