@@ -22,12 +22,12 @@ client.on("ready", () => {
   setInterval(function(){
     let status = statuses[Math.floor(Math.random()*statuses.length)];
     
-    bot.user.setStatus('available')
-    bot.user.setPresence({
+    client.user.setStatus('available')
+    client.user.setPresence({
         game: {
-            name: 'with depression',
+            name: 'status',
             type: "STREAMING",
-            url: "https://www.twitch.tv/monstercat"
+            url: "https://www.twitch.tv/twitch"
         }
     });
 
