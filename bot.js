@@ -22,9 +22,14 @@ client.on("ready", () => {
   setInterval(function(){
     let status = statuses[Math.floor(Math.random()*statuses.length)];
     
-    client.user.setStatus('idle')
-    client.user.setPresence({ activities: [{ name: status }], status: 'idle' });
-    client.user.setActivity(status, { type: 'WATCHING' });
+    bot.user.setStatus('available')
+    bot.user.setPresence({
+        game: {
+            name: 'with depression',
+            type: "STREAMING",
+            url: "https://www.twitch.tv/monstercat"
+        }
+    });
 
   }, 60000)
 
