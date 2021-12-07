@@ -16,24 +16,17 @@ client.on("ready", () => {
 })
   
   console.log(`Bot has started, with ${client.guilds.cache.size} servers, ${client.channels.cache.size} channels and ${count} users.`); 
-
-  client.user.setActivity(`porn`, { type: "WATCHING" })
   
-  // let statuses = [ `${count} users!`, `Prefix : -`, `ItsBondie`];
+  let statuses = [ `over ${count} users!`];
 
-  // setInterval(function(){
-  //   let status = statuses[Math.floor(Math.random()*statuses.length)];
+  setInterval(function(){
+    let status = statuses[Math.floor(Math.random()*statuses.length)];
     
-  //   client.user.setStatus('available')
-  //   client.user.setPresence({
-  //       game: {
-  //           name: 'status',
-  //           type: "STREAMING",
-  //           url: "https://www.twitch.tv/twitch"
-  //       }
-  //   });
+    client.user.setStatus('idle')
+    client.user.setPresence({ activities: [{ name: status }], status: 'idle' });
+    client.user.setActivity(status, { type: 'WATCHING' });
 
-  // }, 5000)
+  }, 15000)
 
 
 
