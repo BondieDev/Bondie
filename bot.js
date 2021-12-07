@@ -69,7 +69,7 @@ client.on("message", async message => {
 
           
             var embed = new Discord.MessageEmbed()
-            .setAuthor(`Your ping is ${ping}`)
+            .setAuthor(`Bot's latency is ${ping}ms`)
             .setColor("#6a0dad")
             
             
