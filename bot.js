@@ -132,20 +132,22 @@ client.on("message", async message => {
 
 //everything below this is wITHOUT PREFIX
   client.on("message", (message) => {
+  if(message.author.bot) return;  
+
   if (message.content == "fuck u") {
-    message.reply("no fuck you, piece of shit");
+    message.channel.send("no fuck you, piece of shit");
   }
 
   if (message.content == "no u") {
-    message.reply("no you cunt");
+    message.channel.send("no you cunt");
   }
 
   if (message.content == "sus") {
-    message.reply("bro stfu ur not 7 are you");
+    message.channel.send("bro stfu ur not 7 are you");
   }
 
   if (message.content == "smd") {
-    message.reply("where");
+    message.channel.send("where");
   }
 
   if (message.content == "nigga") {
@@ -156,6 +158,18 @@ client.on("message", async message => {
   if (message.content == "nigger") {
   	message.delete();
     message.reply("ayo we dont want no n words in here, AYO U USED THE HARD R FUCK U");
+  }
+
+   if (message.content == "fortnite") {
+    message.channel.send("ew u said the word i fucking disgust you now small ratatouille looking ass ");
+  }
+
+  if (message.content == "bro stfu") {
+    message.channel.send("ok");
+  }
+
+  if (message.content == "ok") {
+    message.channel.send("ok bitch what now");
   }
 });
 
