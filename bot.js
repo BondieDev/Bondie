@@ -128,7 +128,37 @@ client.on("message", async message => {
  
   // }
 
-}
-);
+});
+
+//everything below this is wITHOUT PREFIX
+  client.on("message", (message) => {
+  if (message.content == "fuck u") {
+    message.reply("no fuck you, piece of shit");
+  }
+
+  if (message.content == "no u") {
+    message.reply("no you cunt");
+  }
+
+  if (message.content == "sus") {
+    message.reply("bro stfu ur not 7 are you");
+  }
+
+  if (message.content == "smd") {
+    message.reply("where");
+  }
+
+  if (message.content == "nigga") {
+  	message.delete();
+    message.reply("ayo we dont want no n words in here or crystal will get mad so stfu");
+  }
+
+  if (message.content == "nigger") {
+  	message.delete();
+    message.reply("ayo we dont want no n words in here, AYO U USED THE HARD R FUCK U");
+  }
+});
+
+;
 
 client.login(config.token);
