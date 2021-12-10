@@ -45,8 +45,6 @@ client.on("guildDelete", guild => {
 
 
 client.on("message", async message => {
-
-  console.log("[" + message.channel.name + "] " + message.member.user.tag + " > " + message.content);
   if(message.author.bot) return;  
   if(message.content.indexOf(config.prefix) !== 0) return;
   
@@ -132,45 +130,96 @@ client.on("message", async message => {
 
 //everything below this is wITHOUT PREFIX
   client.on("message", (message) => {
-  if(message.author.bot) return;  
+  if(message.author.bot) return; 
+  const command = message.content.toLowerCase();
 
-  if (message.content == "fuck u") {
+  if (command == "fuck u") {
     message.channel.send("no fuck you, piece of shit");
   }
 
-  if (message.content == "no u") {
+  if (command == "no u") {
     message.channel.send("no you cunt");
   }
 
-  if (message.content == "sus") {
+  if (command == "sus") {
     message.channel.send("bro stfu ur not 7 are you");
   }
 
-  if (message.content == "smd") {
+  if (command == "smd") {
     message.channel.send("where");
   }
 
-  if (message.content == "nigga") {
+  if (command == "nigga") {
   	message.delete();
     message.reply("ayo we dont want no n words in here or crystal will get mad so stfu");
   }
 
-  if (message.content == "nigger") {
+  if (command == "nigger") {
   	message.delete();
     message.reply("ayo we dont want no n words in here, AYO U USED THE HARD R FUCK U");
   }
 
-   if (message.content == "fortnite") {
+   if (command == "fortnite") {
     message.channel.send("ew u said the word i fucking disgust you now small ratatouille looking ass ");
   }
 
-  if (message.content == "bro stfu") {
+  if (command == "bro stfu") {
     message.channel.send("ok");
   }
 
-  if (message.content == "ok") {
+  if (command == "ok") {
     message.channel.send("ok bitch what now");
   }
+
+  if (command == "idk") {
+    message.channel.send("idk either");
+  }
+
+  if (command == "haha") {
+    message.channel.send("very funny.");
+  }
+
+  if (command == "wtf") {
+    message.channel.send("what the fek");
+  }
+
+  if (command == "bro") {
+    message.channel.send("bro");
+  }
+
+  if (command == "ayo") {
+    message.channel.send("AYOOOOOOOO");
+  }
+
+  if (command == "ashley") {
+    message.channel.send("is a bitch");
+  }
+
+  if (command == "stop") {
+    message.channel.send("YAMATEEEEEEEEE");
+  }
+
+  if (command == "pls") {
+    message.channel.send("por favor");
+  }
+
+  if (command == "pussy") {
+    message.channel.send("feels good");
+  }
+
+  if (command == "cock") {
+    message.channel.send("'n balls");
+  }
+
+  if (command == "dick") {
+    message.channel.send("head");
+  }
+
+  if (command == "balls") {
+    message.channel.send("in yo yaws");
+  }
+
+
 });
 
 ;
