@@ -46,7 +46,9 @@ client.on("guildDelete", guild => {
 
 client.on("message", async message => {
   if(message.author.bot) return;  
+  console.log("[" + message.channel.name + "] " + message.member.user.tag + " > " + message.content);
   if(message.content.indexOf(config.prefix) !== 0) return;
+
   
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
@@ -216,9 +218,22 @@ client.on("message", async message => {
   }
 
   if (command == "balls") {
-    message.channel.send("in yo yaws");
+    message.channel.send("in yo jaws");
   }
 
+  if (command == "crystal") {
+    message.channel.send("Calculating penis size...").then(m =>{
+    	var inches = Math.floor((Math.random() * 10) + 5);
+
+          
+            var embed = new Discord.MessageEmbed()
+            .setAuthor(`Crystal's dick is ${inches} inches`)
+            .setColor("#6a0dad")
+            
+            
+            m.edit(embed)
+    })
+  } 
 
 });
 
