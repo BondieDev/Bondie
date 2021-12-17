@@ -28,9 +28,6 @@ client.on("ready", () => {
 
   }, 15000)
 
-
-
-    
 });
 
 client.on("guildCreate", guild => {
