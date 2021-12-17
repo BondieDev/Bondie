@@ -197,11 +197,6 @@ client.on("message", async message => {
     message.channel.send("is a bitch");
   }
 
-  if (command == "https://cdn.discordapp.com/attachments/915223303097036823/921032453022445568/unknown.png") {
-  	message.delete()
-    message.channel.send("nope");
-  }
-
   if (command == "stop") {
     message.channel.send("YAMATEEEEEEEEE");
   }
