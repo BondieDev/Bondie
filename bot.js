@@ -220,7 +220,7 @@ client.on("message", async message => {
   if (command == "balls") {
     message.channel.send("in yo jaws");
   } 
-
+//
 });
 
 ;
