@@ -131,6 +131,7 @@ client.on("message", async message => {
 });
 
 //everything below this is wITHOUT PREFIX
+
   client.on("message", (message) => {
   if(message.author.bot) return; 
   const command = message.content.toLowerCase();
