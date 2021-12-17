@@ -219,20 +219,6 @@ client.on("message", async message => {
 
   if (command == "balls") {
     message.channel.send("in yo jaws");
-  }
-
-  if (command == "crystal") {
-    message.channel.send("Calculating penis size...").then(m =>{
-    	var inches = Math.floor((Math.random() * 10) + 5);
-
-          
-            var embed = new Discord.MessageEmbed()
-            .setAuthor(`Crystal's dick is ${inches} inches`)
-            .setColor("#6a0dad")
-            
-            
-            m.edit(embed)
-    })
   } 
 
 });
