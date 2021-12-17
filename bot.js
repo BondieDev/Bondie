@@ -53,15 +53,6 @@ client.on("message", async message => {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
-  // Ping command
-  // if(command === "ping") {
-  //   let ping = (Math.round(Math.random() * 17) + 2)
-  //   let ping2 = (Math.round(Math.random() * 12) + 1)
-  //   message.channel.send("Pong?").then((message)=>{
-  //     message.edit("Bot ping is " + ping + "ms, API latency is " + ping2 +"ms.")
-  //   });
-  // }
-
   if (command === "ping") {
  	message.channel.send("Pinging...").then(m =>{
           
