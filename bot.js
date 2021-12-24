@@ -107,6 +107,17 @@ client.on("message", async message => {
     message.channel.send("Current bot uptime: "+uptime);
   }
 
+  if(command === "addchannel") {
+  	if (message.author.id == "316108756243054605") {
+          var argresult = args.join(' ');
+              message.guild.channels.create(argresult, "text");
+              message.channel.send("Added channel!")
+      } else {
+          message.reply("You are not the bot owner!");
+      }
+  }
+
+
   if(command === "curse"){
   	let curses = [ `fuck` , `shit` , `arse` , `crap` , `bloody` , `damn`,`piss off`,`dickhead`,`asshole`,`bitch`,`bastard`];
 
@@ -180,10 +191,6 @@ client.on("message", async message => {
 
   if (command == "ayo") {
     message.channel.send("AYOOOOOOOO");
-  }
-
-  if (command == "ashley") {
-    message.channel.send("is a bitch");
   }
 
   if (command == "stop") {
