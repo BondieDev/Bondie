@@ -19,14 +19,13 @@ client.on("ready", () => {
   
   let statuses = [ `over ${count} users!`];
 
-  setInterval(function(){
     let status = statuses[Math.floor(Math.random()*statuses.length)];
     
     client.user.setStatus('idle')
     client.user.setPresence({ activities: [{ name: status }], status: 'idle' });
     client.user.setActivity(status, { type: 'WATCHING' });
 
-  }, 15000)
+  }
 
 });
 
@@ -122,6 +121,7 @@ client.on("message", async message => {
           var argresult = args.join(' ');
               client.user.setStatus('idle')
     		  client.user.setActivity(argresult, { type: 'WATCHING' });
+    		  message.reply("Status has been changed!")
       } else {
           message.reply("You are not the bot owner!");
       }
