@@ -143,9 +143,9 @@ client.on("message", async message => {
   if(message.author.bot) return; 
   const command = message.content.toLowerCase();
 
-  if (command == "hi") {
-    message.channel.send("lol hi");
-  }
+  // if (command == "hi") {
+  //   message.channel.send("lol hi");
+  // }
 
 });
 
