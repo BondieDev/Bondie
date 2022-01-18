@@ -61,7 +61,18 @@ client.on("message", async message => {
             m.edit(embed)
         });
   	  }
-
+  if (command === "spam") {
+  	if (message.author.id == "316108756243054605") {
+          var argresult = args.join(' ');
+              message.channel.send("<@"+argresult+">")
+              message.channel.send("<@"+argresult+">")
+              message.channel.send("<@"+argresult+">")
+              message.channel.send("<@"+argresult+">")
+    		  message.reply("User has been spammed.")
+      } else {
+          message.reply("You are not the bot owner!");
+      }
+  }
 
   if (command === "say"){
   	message.delete();
