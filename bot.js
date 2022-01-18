@@ -118,14 +118,14 @@ client.on("message", async message => {
   }
 
 
-  if(command === "curse"){
-  	let curses = [ `fuck` , `shit` , `arse` , `crap` , `bloody` , `damn`,`piss off`,`dickhead`,`asshole`,`bitch`,`bastard`];
+  // if(command === "curse"){
+  // 	let curses = [ `fuck` , `shit` , `arse` , `crap` , `bloody` , `damn`,`piss off`,`dickhead`,`asshole`,`bitch`,`bastard`];
 
-    let curse = curses[Math.floor(Math.random()*curses.length)];
-    message.delete();
-    message.channel.send(curse+"!")
+  //   let curse = curses[Math.floor(Math.random()*curses.length)];
+  //   message.delete();
+  //   message.channel.send(curse+"!")
  
-  }
+  // }
 
 });
 
@@ -135,108 +135,9 @@ client.on("message", async message => {
   if(message.author.bot) return; 
   const command = message.content.toLowerCase();
 
-  if (command == "fuck u") {
-    message.channel.send("no fuck you, piece of shit");
+  if (command == "hi") {
+    message.channel.send("lol hi");
   }
-
-  if (command == "no u") {
-    message.channel.send("no you cunt");
-  }
-
-  if (command == "sus") {
-    message.channel.send("bro stfu ur not 7 are you");
-  }
-
-  if (command == "smd") {
-    message.channel.send("where");
-  }
-
-  if (command == "nigga") {
-  	message.delete();
-    message.reply("ayo we dont want no n words in here or crystal will get mad so stfu");
-  }
-
-  if (command == "nigger") {
-  	message.delete();
-    message.reply("ayo we dont want no n words in here, AYO U USED THE HARD R FUCK U");
-  }
-
-   if (command == "fortnite") {
-    message.channel.send("ew u said the word i fucking disgust you now small ratatouille looking ass ");
-  }
-
-  if (command == "bro stfu") {
-    message.channel.send("ok");
-  }
-
-  if (command == "ok") {
-    message.channel.send("ok bitch what now");
-  }
-
-  if (command == "idk") {
-    message.channel.send("idk either");
-  }
-
-  if (command == "haha") {
-    message.channel.send("very funny.");
-  }
-
-  if (command == "wtf") {
-    message.channel.send("what the fek");
-  }
-
-  if (command == "bro") {
-    message.channel.send("bro");
-  }
-
-  if (command == "ayo") {
-    message.channel.send("AYOOOOOOOO");
-  }
-
-  if (command == "stop") {
-    message.channel.send("YAMATEEEEEEEEE");
-  }
-
-  if (command == "pls") {
-    message.channel.send("por favor");
-  }
-
-  if (command == "pussy") {
-    message.channel.send("feels good");
-  }
-
-  if (command == "cock") {
-    message.channel.send("'n balls");
-  }
-
-  if (command == "dick") {
-    message.channel.send("head");
-  }
-
-  if (command == "balls") {
-    message.channel.send("in yo jaws");
-  } 
-
-  if (command == "virgin") {
-    message.channel.send(`██╗░░░██╗░█████╗░██╗░░░██╗
-╚██╗░██╔╝██╔══██╗██║░░░██║
-░╚████╔╝░██║░░██║██║░░░██║
-░░╚██╔╝░░██║░░██║██║░░░██║
-░░░██║░░░╚█████╔╝╚██████╔╝
-░░░╚═╝░░░░╚════╝░░╚═════╝░
-░█████╗░██████╗░███████╗
-██╔══██╗██╔══██╗██╔════╝
-███████║██████╔╝█████╗░░
-██╔══██║██╔══██╗██╔══╝░░
-██║░░██║██║░░██║███████╗
-╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝
-██╗░░░██╗██╗██████╗░░██████╗░██╗███╗░░██╗
-██║░░░██║██║██╔══██╗██╔════╝░██║████╗░██║
-╚██╗░██╔╝██║██████╔╝██║░░██╗░██║██╔██╗██║
-░╚████╔╝░██║██╔══██╗██║░░╚██╗██║██║╚████║
-░░╚██╔╝░░██║██║░░██║╚██████╔╝██║██║░╚███║
-░░░╚═╝░░░╚═╝╚═╝░░╚═╝░╚═════╝░╚═╝╚═╝░░╚══╝`);
-  } 
 
 });
 
