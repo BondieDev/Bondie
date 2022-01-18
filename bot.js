@@ -123,7 +123,7 @@ client.on("message", async message => {
           let statuses = [argresult];
               client.user.setStatus('idle')
     		  client.user.setPresence({ activities: [{ name: statuses }], status: 'idle' });
-    		  client.user.setActivity(status, { type: 'WATCHING' });
+    		  client.user.setActivity(statuses, { type: 'WATCHING' });
       } else {
           message.reply("You are not the bot owner!");
       }
