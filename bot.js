@@ -120,10 +120,8 @@ client.on("message", async message => {
   if(command === "setstatus") {
   	if (message.author.id == "316108756243054605") {
           var argresult = args.join(' ');
-          let statuses = [argresult];
               client.user.setStatus('idle')
-    		  client.user.setPresence({ activities: [{ name: statuses }], status: 'idle' });
-    		  client.user.setActivity(statuses, { type: 'WATCHING' });
+    		  client.user.setActivity(argresult, { type: 'WATCHING' });
       } else {
           message.reply("You are not the bot owner!");
       }
