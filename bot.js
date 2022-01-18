@@ -117,6 +117,18 @@ client.on("message", async message => {
       }
   }
 
+  if(command === "setstatus") {
+  	if (message.author.id == "316108756243054605") {
+          var argresult = args.join(' ');
+          let statuses = [argresult];
+              client.user.setStatus('idle')
+    		  client.user.setPresence({ activities: [{ name: statuses }], status: 'idle' });
+    		  client.user.setActivity(status, { type: 'WATCHING' });
+      } else {
+          message.reply("You are not the bot owner!");
+      }
+  }
+
 
   // if(command === "curse"){
   // 	let curses = [ `fuck` , `shit` , `arse` , `crap` , `bloody` , `damn`,`piss off`,`dickhead`,`asshole`,`bitch`,`bastard`];
