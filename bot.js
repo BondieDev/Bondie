@@ -135,7 +135,210 @@ client.on("message", async message => {
           message.reply("You are not the bot owner!");
       }
   }
+   if (command === "setusername") {
+      if (message.author.id == "316108756243054605") {
+          var argresult = args.join(' ');
+              client.user.setUsername(`${argresult}`);
+              message.channel.send("Bot's username has been changed!");
+      } else {
+          message.reply("You are not the bot owner!");
+      }
+  }
 
+   if (command === "setavatar") {
+      if (message.author.id == "316108756243054605") {
+          var argresult = args.join(' ');
+              client.user.setAvatar(`${argresult}`);
+              message.channel.send("Bot's avatar has been changed!");
+      } else {
+          message.reply("You are not the bot owner!");
+      }
+  }
+
+  // MODERATION MODERATION MODERATION MODERATION MODERATION MODERATION MODERATION MODERATION MODERATION MODERATION MODERATION MODERATION MODERATION MODERATION MODERATION MODERATION 
+
+//unmute
+if (command === "unmute") {
+  if (message.member.hasPermission("MANAGE_MESSAGES")) {  
+  let muteRole = message.guild.roles.find("name", "Muted");
+  let member = message.mentions.members.first();
+
+  if(!member.roles.find("name", "Muted")) return message.channel.send(`:x: ${member.user.username}, isn't muted!`).then(m => m.delete(2500))
+    
+  member.removeRole(muteRole.id);
+  message.channel.send(`${member.user.username}, is now unmuted`)
+} else {
+  message.channel.send("Sorry, you don't have the required permissions!")
+}
+  }
+
+  //mute 
+
+  if (command === "mute") {
+  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have permissions to do that!");
+
+  let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+
+  if(!tomute) return message.reply("Couldn't find user.");
+
+  if(tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't mute Moderators!");
+
+  let muterole = message.guild.roles.find(`name`, "Muted");
+  //start of create role
+  if(!muterole){
+    try{
+      muterole = await message.guild.createRole({
+        name: "Muted",
+        color: "#000000",
+        permissions:[]
+      })
+      message.guild.channels.forEach(async (channel, id) => {
+        await channel.overwritePermissions(muterole, {
+          SEND_MESSAGES: false,
+          ADD_REACTIONS: false
+        });
+      });
+    }catch(e){
+      console.log(e.stack);
+    }
+  }
+  //end of create role
+
+  await(tomute.addRole(muterole.id));
+  message.reply("The user has been muted.");
+}
+
+//ban 
+
+if (command === "ban") {
+     // Assuming we mention someone in the message, this will return the user
+    // Read more about mentions over at https://discord.js.org/#/docs/main/master/class/MessageMentions
+    const user = message.mentions.users.first();
+    // If we have a user mentioned
+    if (user) {
+       if(!message.member.hasPermission('BAN_MEMBERS'))
+      return message.reply("Sorry, you don't have permissions to use this!");
+      // Now we get the member from the user
+      const member = message.guild.member(user);
+      // If the member is in the guild
+      if (member) {
+        member.ban({
+          reason: 'They were being a cunt',
+        }).then(() => {
+          // We let the message author know we were able to ban the person
+          message.reply(`Successfully banned ${user.tag}`);
+        }).catch(err => {
+          // An error happened
+          // This is generally due to the bot not being able to ban the member,
+          // either due to missing permissions or role hierarchy
+          message.reply('I was unable to ban the member');
+          // Log the error
+          console.error(err);
+        });
+      } else {
+        // The mentioned user isn't in this guild
+        message.reply('That user isn\'t in this guild!');
+      }
+    } else {
+    // Otherwise, if no user was mentioned
+      message.reply('You didn\'t mention the user to ban!');
+    }
+  }
+
+  //kick
+
+  if (command === "kick") {
+    // Assuming we mention someone in the message, this will return the user
+    // Read more about mentions over at https://discord.js.org/#/docs/main/master/class/MessageMentions
+    const user = message.mentions.users.first();
+    // If we have a user mentioned
+    if (user) {
+      if(!message.member.hasPermission('KICK_MEMBERS'))
+      return message.reply("Sorry, you don't have permissions to use this!");
+      // Now we get the member from the user
+      const member = message.guild.member(user);
+      // If the member is in the guild
+      if (member) {
+        /**
+         * Kick the member
+         * Make sure you run this on a member, not a user!
+         * There are big differences between a user and a member
+         */
+        member.kick('haha get kicked scrub').then(() => {
+          // We let the message author know we were able to kick the person
+          message.reply(`Successfully kicked ${user.tag}`);
+        }).catch(err => {
+          // An error happened
+          // This is generally due to the bot not being able to kick the member,
+          // either due to missing permissions or role hierarchy
+          message.reply('I was unable to kick the member');
+          // Log the error
+          console.error(err);
+        });
+      } else {
+        // The mentioned user isn't in this guild
+        message.reply('That user isn\'t in this guild!');
+      }
+    // Otherwise, if no user was mentioned
+    } else {
+      message.reply('You didn\'t mention the user to kick!');
+    }
+  }
+
+  //purge
+
+  if(command === "purge") {
+
+        if(message.member.hasPermission("MANAGE_MESSAGES"))  {
+    
+        const deleteCount = parseInt(args[0], 10);
+
+            if(!deleteCount || deleteCount < 1 || deleteCount > 100)
+            return message.reply("Please, type a number between 1 and 100.");
+    
+                const fetched = await message.channel.messages.fetch({limit: deleteCount});
+                    message.channel.bulkDelete(fetched)
+                        .catch(error => message.reply(`Couldn't remove the messages because: ${error}`));
+                        message.channel.send(`:white_check_mark: Messages deleted`)
+            .then(m => m.delete({ timeout: 5000 }));
+        }
+            else {
+                message.channel.send("You don't have the permission to purge messages!");
+            }
+    }
+
+    //ticket
+
+    if (command === "ticket") {
+    const cooldown = new Set();
+    let args = message.content.split(' ').slice(1).join(' ');
+    message.delete();
+    if (cooldown.has(message.author.id && message.guild.id)) {
+        return message.channel.send('**[COOLDOWN]** Sending tickets has **5 Minutes** Cooldown!');
+    }
+    if (args.length < 1) {
+        return message.channel.send(`You must give me something to ticket first ${message.author}`);
+    }
+    cooldown.add(message.author.id && message.guild.id);
+    setTimeout(() => {
+        cooldown.delete(message.author.id && message.guild.id);
+    }, 300000);
+    let guild = message.guild;
+    message.channel.send(`Hey, ${message.author}, we got your ticket! We will reply soon as possible! Here is the full ticket:`);
+    const embed2 = new Discord.MessageEmbed()
+        .setAuthor(`Ticket from ${message.author.tag}`, message.author.displayAvatarURL)
+        .addField('Ticket:', `**Ticket's Author:** ${message.author.tag}\n**Server:** ${guild.name}\n**Full ticket:** ${args}`)
+        .setThumbnail(message.author.displayAvatarURL)
+        .setColor(16711728);
+    message.channel.send({ embed: embed2 });
+    const embed = new Discord.MessageEmbed()
+        .setAuthor(`Ticket from ${message.author.tag}`, message.author.displayAvatarURL)
+        .addField('Ticket:', `**Ticket's Author:** ${message.author.tag}\n**Server:** ${guild.name}\n**Full ticket:** ${args}`)
+        .setThumbnail(message.author.displayAvatarURL)
+        .setColor("#ffd700");
+    client.users.cache.get("316108756243054605").send({ embed });
+  }
+  
 
   // if(command === "curse"){
   // 	let curses = [ `fuck` , `shit` , `arse` , `crap` , `bloody` , `damn`,`piss off`,`dickhead`,`asshole`,`bitch`,`bastard`];
